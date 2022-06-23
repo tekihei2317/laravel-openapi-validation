@@ -1,0 +1,28 @@
+title: task
+x-stoplight:
+  id: gjd2vg927rce1
+x-tags:
+  - タスク
+type: object
+properties:
+  id:
+    type: integer
+    description: タスクID
+    example: 1
+  name:
+    type: string
+    description: タスク名
+    example: LaravelにOpenAPIを導入する
+  status:
+    type: string
+    enum:
+      - Open
+      - In Progress
+      - Completed
+  description:
+    type: string
+    example: Laravel
+required:
+  - id
+  - name
+  - status
