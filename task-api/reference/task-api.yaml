@@ -41,18 +41,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                description:
-                  type: string
-                  nullable: true
-                status_id:
-                  type: integer
-              required:
-                - name
-                - status_id
+              $ref: ../models/core/request/create-task-request.yaml
   '/tasks/{task_id}':
     parameters:
       - schema:
@@ -94,13 +83,25 @@ paths:
       summary: タスクを更新する
       tags:
         - タスク
-      responses: {}
+      responses:
+        '204':
+          description: No Content
       operationId: put-tasks-taskId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/core/request/create-task-request.yaml
+          application/xml:
+            schema:
+              $ref: ''
     delete:
       summary: タスクを削除する
       tags:
         - タスク
-      responses: {}
+      responses:
+        '204':
+          description: No Content
       operationId: delete-tasks-taskId
 components:
   schemas:
