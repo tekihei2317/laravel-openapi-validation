@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTaskRequest;
 use Illuminate\Http\JsonResponse;
 
 class TaskController extends Controller
@@ -31,5 +32,12 @@ class TaskController extends Controller
         ];
 
         return response()->json($task);
+    }
+
+    public function store(StoreTaskRequest $request): JsonResponse
+    {
+        $task = $request->validated() + ['id' => 1, 'status' => 'Open'];
+
+        return response()->json($task, 201);
     }
 }

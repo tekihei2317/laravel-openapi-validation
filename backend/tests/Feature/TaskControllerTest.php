@@ -75,8 +75,10 @@ class TaskControllerTest extends TestCase
             'name' => '掃除する',
             'status_id' => 1,
             'description' => 'キッチンまわりの掃除をする',
+            'hoge' => 'fuga',
         ];
 
-        $this->postJson($this->resourcePath, $data)->assertValidRequest()->assertValidResponse(201);
+        $response = $this->postJson($this->resourcePath, $data);
+        $response->assertValidRequest()->assertValidResponse(201);
     }
 }

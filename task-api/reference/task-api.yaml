@@ -27,7 +27,15 @@ paths:
       summary: タスクを登録する
       tags:
         - タスク
-      responses: {}
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ../models/core/task-resource.yaml
+        '422':
+          $ref: '#/components/responses/422'
       operationId: post-tasks
       requestBody:
         content:
@@ -137,3 +145,17 @@ components:
         - lastName
         - email
         - emailVerified
+  responses:
+    '422':
+      description: Example response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+        application/xml:
+          schema:
+            type: object
+            properties: {}
