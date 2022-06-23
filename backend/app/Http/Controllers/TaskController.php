@@ -18,6 +18,12 @@ class TaskController extends Controller
                 'description' => null,
             ]
         ];
+        // $tasks = [
+        //     'id' => 1,
+        //     'name' => '掃除する',
+        //     'status' => 'Open',
+        //     'description' => null,
+        // ];
 
         return response()->json($tasks);
     }
@@ -29,7 +35,7 @@ class TaskController extends Controller
             'name' => '掃除する',
             'status' => 'Open',
             'status_id' => 1,
-            'description' => 'キッチンまわりの掃除をする',
+            'description' => null,
         ];
 
         return response()->json($task);

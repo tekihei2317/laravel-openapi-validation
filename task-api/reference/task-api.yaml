@@ -20,7 +20,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: ../models/core/task.yaml
+                  $ref: '#/components/schemas/task'
               examples: {}
       operationId: get-tasks
     post:
@@ -59,25 +59,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  description:
-                    type: string
-                    nullable: true
-                  status:
-                    type: string
-                  status_id:
-                    type: number
-                required:
-                  - id
-                  - name
-                  - description
-                  - status
-                  - status_id
+                $ref: ../models/core/task-resource.yaml
       operationId: get-tasks-taskId
     put:
       summary: タスクを更新する
@@ -105,47 +87,28 @@ paths:
       operationId: delete-tasks-taskId
 components:
   schemas:
-    User:
-      title: User
+    task:
+      title: task
+      x-stoplight:
+        id: xm0cwxd57w0hk
+      x-tags:
+        - タスク
       type: object
-      description: ''
-      x-examples:
-        Alice Smith:
-          id: 142
-          firstName: Alice
-          lastName: Smith
-          email: alice.smith@gmail.com
-          dateOfBirth: '1997-10-31'
-          emailVerified: true
-          signUpDate: '2019-08-24'
       properties:
         id:
           type: integer
-          description: Unique identifier for the given user.
-        firstName:
+        name:
           type: string
-        lastName:
+        status:
           type: string
-        email:
+        description:
           type: string
-          format: email
-        dateOfBirth:
-          type: string
-          format: date
-          example: '1997-10-31'
-        emailVerified:
-          type: boolean
-          description: Set to true if the user's email has been verified.
-        createDate:
-          type: string
-          format: date
-          description: The date that the user was created.
+          nullable: true
       required:
         - id
-        - firstName
-        - lastName
-        - email
-        - emailVerified
+        - name
+        - status
+        - description
   responses:
     '422':
       description: Example response

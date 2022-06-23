@@ -23,6 +23,7 @@ properties:
     type:
       - string
       - 'null'
+    # nullable: true
     example: Laravel
 required:
   - id

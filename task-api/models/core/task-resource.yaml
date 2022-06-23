@@ -25,7 +25,7 @@ properties:
   description:
     type:
       - string
-      - 'null'
+    nullable: true
     example: Laravel
 required:
   - id
