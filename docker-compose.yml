@@ -11,5 +11,8 @@ services:
       - 8000:8000
     volumes:
       - ./backend:/work/backend
+      - ./task-api:/work/task-api
     working_dir: /work/backend
     command: php artisan serve --host=0.0.0.0
+    environment:
+      - SPEC_PATH=/work/task-api/reference

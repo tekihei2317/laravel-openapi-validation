@@ -20,9 +20,12 @@ properties:
       - In Progress
       - Completed
   description:
-    type: string
+    type:
+      - string
+      - 'null'
     example: Laravel
 required:
   - id
   - name
   - status
+  - description
