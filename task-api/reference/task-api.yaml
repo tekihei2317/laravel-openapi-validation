@@ -33,15 +33,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../models/core/task-resource.yaml
-        '422':
-          $ref: '#/components/responses/422'
+                $ref: '#/components/schemas/task-resource'
       operationId: post-tasks
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ../models/core/request/create-task-request.yaml
+              $ref: '#/components/schemas/create-task-request'
+        description: ''
   '/tasks/{task_id}':
     parameters:
       - schema:
@@ -59,7 +58,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../models/core/task-resource.yaml
+                $ref: '#/components/schemas/task-resource'
       operationId: get-tasks-taskId
     put:
       summary: タスクを更新する
@@ -68,12 +67,14 @@ paths:
       responses:
         '204':
           description: No Content
+        '422':
+          $ref: '#/components/responses/422'
       operationId: put-tasks-taskId
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ../models/core/request/create-task-request.yaml
+              $ref: '#/components/schemas/create-task-request'
           application/xml:
             schema:
               $ref: ''
@@ -109,6 +110,47 @@ components:
         - name
         - status
         - description
+    task-resource:
+      properties:
+        id:
+          type: integer
+          description: タスクID
+          example: 1
+        name:
+          type: string
+          description: タスク名
+          example: LaravelにOpenAPIを導入する
+        status:
+          type: string
+          enum:
+            - Open
+            - In Progress
+            - Completed
+        status_id:
+          type: integer
+          example: 1
+        description:
+          type: string
+          nullable: true
+          example: Laravel
+      required:
+        - id
+        - name
+        - status
+        - status_id
+        - description
+    create-task-request:
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        status_id:
+          type: integer
+      required:
+        - name
+        - status_id
   responses:
     '422':
       description: Example response
